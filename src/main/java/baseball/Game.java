@@ -1,5 +1,7 @@
 package baseball;
 
+import java.util.Scanner;
+
 public class Game {
 
     private static final int continueGame = 1;
@@ -11,17 +13,19 @@ public class Game {
     public static int[] inputNumber = new int[baseballNumberLength];
     private int[] StrikeBallNothingArray;
 
-    private void initConfig(){
+    private void initConfig() {
         SettingRandomNumber settingRandomNumber = new SettingRandomNumber();
         settingRandomNumber.setRandomValue(answerNumber);
     }
 
-    private void gaming(){
-        while(true){
+    private void gaming() {
+        while (true) {
             setNumber();
             compareTwoArray();
             boolean isEndGame = endGame();
-            if(isEndGame) break;
+            if (isEndGame) {
+                break;
+            }
         }
     }
 
@@ -43,18 +47,37 @@ public class Game {
 
     private boolean endGame() {
         if (StrikeBallNothingArray[strike] == 3) {
+            System.out.println("3스트라이크");
+            System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         } else {
+            showMessage();
             return false;
+        }
+    }
+
+    private void showMessage() {
+        if (StrikeBallNothingArray[nothing] == baseballNumberLength) {
+            System.out.println("낫싱");
+        } else if (StrikeBallNothingArray[strike] == 0) {
+            System.out.println(StrikeBallNothingArray[ball] + "볼");
+        } else if (StrikeBallNothingArray[ball] == 0) {
+            System.out.println(StrikeBallNothingArray[strike] + "스트라이크");
+        } else {
+            System.out.println(
+                StrikeBallNothingArray[ball] + "볼" + " " + StrikeBallNothingArray[strike]
+                    + "스트라이크");
         }
     }
 
     public void run() {
         int isContinue = continueGame;
+        Scanner scanner = new Scanner(System.in);
 
         while (isContinue == continueGame) {
             initConfig();
             gaming();
+            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
             break;
         }
     }
