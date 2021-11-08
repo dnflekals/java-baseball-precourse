@@ -1,20 +1,18 @@
 package baseball;
 
-import java.util.LinkedList;
-import java.util.Scanner;
-
 public class Game {
 
     private static final int continueGame = 1;
     private static final int baseballNumberLength = 3;
     public static int[] answerNumber = new int[baseballNumberLength];
     public static int[] inputNumber = new int[baseballNumberLength];
+    private int[] StrikeBallNothingArray;
 
     private void setNumber() {
-        Input inputClass = new Input();
-        inputClass.setRandomValue(answerNumber);
+        SettingNumber settingNumber = new SettingNumber();
+        settingNumber.setRandomValue(answerNumber);
         while (true) {
-            boolean isValidation = inputClass.setInputValue(inputNumber);
+            boolean isValidation = settingNumber.setInputValue(inputNumber);
             if (isValidation) {
                 break;
             }
@@ -22,11 +20,17 @@ public class Game {
         }
     }
 
+    private void compareTwoArray() {
+        CompareNumber compareNumber = new CompareNumber();
+        StrikeBallNothingArray = compareNumber.getCompareNumber(answerNumber, inputNumber);
+    }
+
     public void run() {
         int isContinue = continueGame;
 
         while (isContinue == continueGame) {
             setNumber();
+            compareTwoArray();
             isContinue = 0;
         }
     }
