@@ -5,7 +5,7 @@ import java.util.Scanner;
 import java.util.Set;
 import utils.RandomUtils;
 
-public class Input {
+public class SettingNumber {
 
     private static final int baseballNumberLength = 3;
     private Scanner scanner = new Scanner(System.in);
@@ -28,7 +28,7 @@ public class Input {
 
     protected boolean setInputValue(int[] inputNumber) {
         String inputString = scanner.nextLine();
-        if (inputString.length() > baseballNumberLength) {
+        if (inputString.length() < baseballNumberLength || inputString.length() > baseballNumberLength) {
             return false;
         }
 
