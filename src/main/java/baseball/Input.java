@@ -25,13 +25,30 @@ public class Input {
         }
     }
 
-    protected void setInputValue(int[] inputNumber) {
+    protected boolean setInputValue(int[] inputNumber) {
         String inputString = scanner.nextLine();
+        boolean isValidation = validationInputNumber(inputString);
+        System.out.println(isValidation);
+        if (isValidation == false) {
+            return false;
+        }
         int inputValue = Integer.parseInt(inputString);
 
         for (int i = baseballNumberLength - 1; i >= 0; i--) {
             inputNumber[i] = inputValue % 10;
             inputValue /= 10;
         }
+
+        return true;
+    }
+
+    private boolean validationInputNumber(String inputString) {
+        String[] strArray = inputString.split("");
+        for (String s : strArray) {
+            if (s.charAt(0) <= '0' || s.charAt(0) > '9') {
+                return false;
+            }
+        }
+        return true;
     }
 }
