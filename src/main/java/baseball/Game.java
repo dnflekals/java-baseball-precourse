@@ -70,15 +70,25 @@ public class Game {
         }
     }
 
+    private boolean regame(){
+        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        Scanner scanner = new Scanner(System.in);
+        while(true){
+            int isRegame=scanner.nextInt();
+            if(isRegame==1) return true;
+            else if(isRegame==2) return false;
+            System.out.println("올바른 숫자를 입력해주세요.");
+        }
+    }
+
     public void run() {
         int isContinue = continueGame;
-        Scanner scanner = new Scanner(System.in);
 
         while (isContinue == continueGame) {
             initConfig();
             gaming();
-            System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-            break;
+            boolean isRegame = regame();
+            if(isRegame==false) break;
         }
     }
 }
