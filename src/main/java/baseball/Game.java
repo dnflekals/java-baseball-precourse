@@ -11,15 +11,17 @@ public class Game {
     public static int[] inputNumber = new int[baseballNumberLength];
     private int[] StrikeBallNothingArray;
 
-    private void initConfig() {
+    private void initConfig(){
         SettingRandomNumber settingRandomNumber = new SettingRandomNumber();
         settingRandomNumber.setRandomValue(answerNumber);
     }
 
-    private void gaming() {
-        while (true) {
+    private void gaming(){
+        while(true){
             setNumber();
             compareTwoArray();
+            boolean isEndGame = endGame();
+            if(isEndGame) break;
         }
     }
 
@@ -37,6 +39,14 @@ public class Game {
     private void compareTwoArray() {
         CompareNumber compareNumber = new CompareNumber();
         StrikeBallNothingArray = compareNumber.getCompareNumber(answerNumber, inputNumber);
+    }
+
+    private boolean endGame() {
+        if (StrikeBallNothingArray[strike] == 3) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public void run() {
