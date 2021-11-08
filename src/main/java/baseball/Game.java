@@ -31,13 +31,7 @@ public class Game {
 
     private void setNumber() {
         SettingNumber settingNumber = new SettingNumber();
-        while (true) {
-            boolean isValidation = settingNumber.setInputValue(inputNumber);
-            if (isValidation) {
-                break;
-            }
-            System.out.println("You have entered an invalid number. Please input it again.");
-        }
+        settingNumber.setInputValue(inputNumber);
     }
 
     private void compareTwoArray() {

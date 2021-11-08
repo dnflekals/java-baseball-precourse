@@ -11,30 +11,28 @@ public class SettingNumber {
     private Scanner scanner = new Scanner(System.in);
     private Set<Integer> set = new HashSet<>();
 
-    protected boolean setInputValue(int[] inputNumber) {
+    protected void setInputValue(int[] inputNumber) {
         String inputString = scanner.nextLine();
         if (inputString.length() < baseballNumberLength
             || inputString.length() > baseballNumberLength) {
-            return false;
+            throw new IllegalArgumentException();
         }
 
         boolean isValidation = validationInputNumber(inputString);
         if (isValidation == false) {
-            return false;
+            throw new IllegalArgumentException();
         }
 
         int inputValue = Integer.parseInt(inputString);
         boolean isDuplicated = checkDuplicatedNumber(inputValue);
         if (isDuplicated == false) {
-            return false;
+            throw new IllegalArgumentException();
         }
 
         for (int i = baseballNumberLength - 1; i >= 0; i--) {
             inputNumber[i] = inputValue % 10;
             inputValue /= 10;
         }
-
-        return true;
     }
 
     private boolean validationInputNumber(String inputString) {
