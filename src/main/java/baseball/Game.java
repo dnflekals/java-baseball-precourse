@@ -10,7 +10,7 @@ public class Game {
     public static int[] answerNumber = new int[baseballNumberLength];
     public static int[] inputNumber = new int[baseballNumberLength];
 
-    private void initConfig() {
+    private void setNumber() {
         Input inputClass = new Input();
         inputClass.setRandomValue(answerNumber);
         while (true) {
@@ -26,7 +26,7 @@ public class Game {
         int isContinue = continueGame;
 
         while (isContinue == continueGame) {
-            initConfig();
+            setNumber();
             isContinue = 0;
         }
     }
