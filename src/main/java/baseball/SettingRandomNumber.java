@@ -7,6 +7,7 @@ import utils.RandomUtils;
 public class SettingRandomNumber {
 
     private Set<Integer> set = new HashSet<>();
+
     protected void setRandomValue(int[] answerNumber) {
         set.clear();
         int countRandomValue = 0;
