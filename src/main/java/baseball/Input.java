@@ -9,9 +9,10 @@ public class Input {
 
     private static final int baseballNumberLength = 3;
     private Scanner scanner = new Scanner(System.in);
+    private Set<Integer> set = new HashSet<>();
 
     protected void setRandomValue(int[] answerNumber) {
-        Set<Integer> set = new HashSet<>();
+        set.clear();
         int countRandomValue = 0;
 
         while (countRandomValue < baseballNumberLength) {
@@ -28,11 +29,15 @@ public class Input {
     protected boolean setInputValue(int[] inputNumber) {
         String inputString = scanner.nextLine();
         boolean isValidation = validationInputNumber(inputString);
-        System.out.println(isValidation);
         if (isValidation == false) {
             return false;
         }
+
         int inputValue = Integer.parseInt(inputString);
+        boolean isDuplicated = checkDuplicatedNumber(inputValue);
+        if (isDuplicated == false) {
+            return false;
+        }
 
         for (int i = baseballNumberLength - 1; i >= 0; i--) {
             inputNumber[i] = inputValue % 10;
@@ -48,6 +53,23 @@ public class Input {
             if (s.charAt(0) <= '0' || s.charAt(0) > '9') {
                 return false;
             }
+        }
+        return true;
+    }
+
+    private boolean checkDuplicatedNumber(int inputValue) {
+        set.clear();
+        int countInputValue = 0;
+
+        while (countInputValue < baseballNumberLength) {
+            int num = inputValue % 10;
+            inputValue /= 10;
+
+            if (set.contains(num)) {
+                return false;
+            }
+            set.add(num);
+            countInputValue++;
         }
         return true;
     }

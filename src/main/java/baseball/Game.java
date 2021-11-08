@@ -13,9 +13,11 @@ public class Game {
     private void initConfig() {
         Input inputClass = new Input();
         inputClass.setRandomValue(answerNumber);
-        while(true){
+        while (true) {
             boolean isValidation = inputClass.setInputValue(inputNumber);
-            if(isValidation) break;
+            if (isValidation) {
+                break;
+            }
             System.out.println("You have entered an invalid number. Please input it again.");
         }
     }
