@@ -8,8 +8,9 @@ import utils.RandomUtils;
 public class Input {
 
     private static final int baseballNumberLength = 3;
+    private Scanner scanner = new Scanner(System.in);
 
-    public void setRandomValue(int[] answerNumber) {
+    protected void setRandomValue(int[] answerNumber) {
         Set<Integer> set = new HashSet<>();
         int countRandomValue = 0;
 
@@ -21,6 +22,16 @@ public class Input {
                 answerNumber[countRandomValue] = num;
                 countRandomValue++;
             }
+        }
+    }
+
+    protected void setInputValue(int[] inputNumber) {
+        String inputString = scanner.nextLine();
+        int inputValue = Integer.parseInt(inputString);
+
+        for (int i = baseballNumberLength - 1; i >= 0; i--) {
+            inputNumber[i] = inputValue % 10;
+            inputValue /= 10;
         }
     }
 }
