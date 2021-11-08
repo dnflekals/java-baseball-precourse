@@ -4,13 +4,27 @@ public class Game {
 
     private static final int continueGame = 1;
     private static final int baseballNumberLength = 3;
+    private static final int strike = 0;
+    private static final int ball = 1;
+    private static final int nothing = 2;
     public static int[] answerNumber = new int[baseballNumberLength];
     public static int[] inputNumber = new int[baseballNumberLength];
     private int[] StrikeBallNothingArray;
 
+    private void initConfig() {
+        SettingRandomNumber settingRandomNumber = new SettingRandomNumber();
+        settingRandomNumber.setRandomValue(answerNumber);
+    }
+
+    private void gaming() {
+        while (true) {
+            setNumber();
+            compareTwoArray();
+        }
+    }
+
     private void setNumber() {
         SettingNumber settingNumber = new SettingNumber();
-        settingNumber.setRandomValue(answerNumber);
         while (true) {
             boolean isValidation = settingNumber.setInputValue(inputNumber);
             if (isValidation) {
@@ -29,9 +43,9 @@ public class Game {
         int isContinue = continueGame;
 
         while (isContinue == continueGame) {
-            setNumber();
-            compareTwoArray();
-            isContinue = 0;
+            initConfig();
+            gaming();
+            break;
         }
     }
 }

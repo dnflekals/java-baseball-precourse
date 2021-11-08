@@ -11,24 +11,10 @@ public class SettingNumber {
     private Scanner scanner = new Scanner(System.in);
     private Set<Integer> set = new HashSet<>();
 
-    protected void setRandomValue(int[] answerNumber) {
-        set.clear();
-        int countRandomValue = 0;
-
-        while (countRandomValue < baseballNumberLength) {
-            int num = RandomUtils.nextInt(1, 9);
-
-            if (!set.contains(num)) {
-                set.add(num);
-                answerNumber[countRandomValue] = num;
-                countRandomValue++;
-            }
-        }
-    }
-
     protected boolean setInputValue(int[] inputNumber) {
         String inputString = scanner.nextLine();
-        if (inputString.length() < baseballNumberLength || inputString.length() > baseballNumberLength) {
+        if (inputString.length() < baseballNumberLength
+            || inputString.length() > baseballNumberLength) {
             return false;
         }
 
