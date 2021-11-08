@@ -28,6 +28,10 @@ public class Input {
 
     protected boolean setInputValue(int[] inputNumber) {
         String inputString = scanner.nextLine();
+        if (inputString.length() > baseballNumberLength) {
+            return false;
+        }
+
         boolean isValidation = validationInputNumber(inputString);
         if (isValidation == false) {
             return false;
