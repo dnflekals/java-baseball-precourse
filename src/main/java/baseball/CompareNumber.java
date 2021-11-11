@@ -2,20 +2,20 @@ package baseball;
 
 public class CompareNumber {
 
-    private static final int baseballNumberLength = 3;
-    private static final int strike = 0;
-    private static final int ball = 1;
-    private static final int nothing = 2;
+    private static final int BASEBALL_MAX_NUMBER = 3;
+    private static final int STRIKE = 0;
+    private static final int BALL = 1;
+    private static final int NOTHING = 2;
 
     protected int[] getCompareNumber(int[] answerNumber, int[] inputNumber) {
         // 0번째 index: strike, 1번째 index: ball, 2번째 index: nothing
-        int StrikeBallNothingArray[] = new int[baseballNumberLength];
+        int StrikeBallNothingArray[] = new int[BASEBALL_MAX_NUMBER];
 
-        for (int i = 0; i < baseballNumberLength; i++) {
+        for (int i = 0; i < BASEBALL_MAX_NUMBER; i++) {
             boolean isAddStrike = addStrike(StrikeBallNothingArray, answerNumber, inputNumber, i);
             boolean isAddBall = addBall(StrikeBallNothingArray, answerNumber, inputNumber, i);
             if (isAddStrike == false && isAddBall == false) {
-                StrikeBallNothingArray[nothing]++;
+                StrikeBallNothingArray[NOTHING]++;
             }
         }
 
@@ -25,7 +25,7 @@ public class CompareNumber {
     private boolean addStrike(int[] StrikeBallNothingArray, int[] answerNumber, int[] inputNumber,
         int index) {
         if (answerNumber[index] == inputNumber[index]) {
-            StrikeBallNothingArray[strike]++;
+            StrikeBallNothingArray[STRIKE]++;
             return true;
         }
         return false;
@@ -33,12 +33,12 @@ public class CompareNumber {
 
     private boolean addBall(int[] StrikeBallNothingArray, int[] answerNumber, int[] inputNumber,
         int index) {
-        for (int i = 0; i < baseballNumberLength; i++) {
+        for (int i = 0; i < BASEBALL_MAX_NUMBER; i++) {
             if (index == i) {
                 continue;
             }
             if (answerNumber[index] == inputNumber[i]) {
-                StrikeBallNothingArray[ball]++;
+                StrikeBallNothingArray[BALL]++;
                 return true;
             }
         }

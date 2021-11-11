@@ -4,13 +4,13 @@ import java.util.Scanner;
 
 public class Game {
 
-    private static final int continueGame = 1;
-    private static final int baseballNumberLength = 3;
-    private static final int strike = 0;
-    private static final int ball = 1;
-    private static final int nothing = 2;
-    public static int[] answerNumber = new int[baseballNumberLength];
-    public static int[] inputNumber = new int[baseballNumberLength];
+    private static final int CONTINUE_GAME = 1;
+    private static final int BASEBALL_MAX_NUMBER = 3;
+    private static final int STRIKE = 0;
+    private static final int BALL = 1;
+    private static final int NOTHING = 2;
+    public static int[] answerNumber = new int[BASEBALL_MAX_NUMBER];
+    public static int[] inputNumber = new int[BASEBALL_MAX_NUMBER];
     private int[] StrikeBallNothingArray;
 
     private void initConfig() {
@@ -40,7 +40,7 @@ public class Game {
     }
 
     private boolean endGame() {
-        if (StrikeBallNothingArray[strike] == 3) {
+        if (StrikeBallNothingArray[STRIKE] == 3) {
             System.out.println("3스트라이크");
             System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
@@ -51,15 +51,15 @@ public class Game {
     }
 
     private void showMessage() {
-        if (StrikeBallNothingArray[nothing] == baseballNumberLength) {
+        if (StrikeBallNothingArray[NOTHING] == BASEBALL_MAX_NUMBER) {
             System.out.println("낫싱");
-        } else if (StrikeBallNothingArray[strike] == 0) {
-            System.out.println(StrikeBallNothingArray[ball] + "볼");
-        } else if (StrikeBallNothingArray[ball] == 0) {
-            System.out.println(StrikeBallNothingArray[strike] + "스트라이크");
+        } else if (StrikeBallNothingArray[STRIKE] == 0) {
+            System.out.println(StrikeBallNothingArray[BALL] + "볼");
+        } else if (StrikeBallNothingArray[BALL] == 0) {
+            System.out.println(StrikeBallNothingArray[STRIKE] + "스트라이크");
         } else {
             System.out.println(
-                StrikeBallNothingArray[ball] + "볼" + " " + StrikeBallNothingArray[strike]
+                StrikeBallNothingArray[BALL] + "볼" + " " + StrikeBallNothingArray[STRIKE]
                     + "스트라이크");
         }
     }
@@ -79,9 +79,9 @@ public class Game {
     }
 
     public void run() {
-        int isContinue = continueGame;
+        int isContinue = CONTINUE_GAME;
 
-        while (isContinue == continueGame) {
+        while (isContinue == CONTINUE_GAME) {
             initConfig();
             gaming();
             boolean isRegame = regame();

@@ -7,14 +7,14 @@ import utils.RandomUtils;
 
 public class SettingNumber {
 
-    private static final int baseballNumberLength = 3;
+    private static final int BASEBALL_MAX_NUMBER = 3;
     private Scanner scanner = new Scanner(System.in);
     private Set<Integer> set = new HashSet<>();
 
     protected void setInputValue(int[] inputNumber) {
         String inputString = scanner.nextLine();
-        if (inputString.length() < baseballNumberLength
-            || inputString.length() > baseballNumberLength) {
+        if (inputString.length() < BASEBALL_MAX_NUMBER
+            || inputString.length() > BASEBALL_MAX_NUMBER) {
             throw new IllegalArgumentException();
         }
 
@@ -29,7 +29,7 @@ public class SettingNumber {
             throw new IllegalArgumentException();
         }
 
-        for (int i = baseballNumberLength - 1; i >= 0; i--) {
+        for (int i = BASEBALL_MAX_NUMBER - 1; i >= 0; i--) {
             inputNumber[i] = inputValue % 10;
             inputValue /= 10;
         }
@@ -49,7 +49,7 @@ public class SettingNumber {
         set.clear();
         int countInputValue = 0;
 
-        while (countInputValue < baseballNumberLength) {
+        while (countInputValue < BASEBALL_MAX_NUMBER) {
             int num = inputValue % 10;
             inputValue /= 10;
 
